@@ -5,6 +5,7 @@ import { html5Svg, css3Svg, jsSvg, githubSvg, storybook } from '../utils/svg-ico
 import { seedStyle } from '@seed-catalog/styles';
 import '../components/navigation/navigation-wc';
 import '../components/common-header.js';
+import '../components/lit-modal.js';
 
 class HomeView extends LitElement {
   static get styles() {
@@ -19,9 +20,28 @@ class HomeView extends LitElement {
             <h1 class="main-title">Frontend <br />Development</h1>
             <hr class="separator separator-main" />
             <div class="btn-container">
-              <button class="sd-btn-mix black"><i class="material-icons">check</i> Testing</button>
-              <button class="sd-btn-mix blue-mate"><i class="material-icons">view_quilt</i> WC</button>
-              <button class="sd-btn-mix green-mate"><i class="material-icons">style</i> Catalog</button>
+              <lit-modal id="home-lit-testing-modal">
+                <button class="sd-btn-mix black" slot="open" @click="${this.openModal('home-lit-testing-modal')}">
+                  <i class="material-icons">check</i> Testing
+                </button>
+                Mocha is a feature-rich JavaScript test framework running on Node.js and in the browser, making
+                asynchronous testing simple and fun. Mocha tests run serially, allowing for flexible and accurate
+                reporting, while mapping uncaught exceptions to the correct test cases. Hosted on GitHub.
+              </lit-modal>
+              <lit-modal id="home-lit-wc-modal">
+                <button class="sd-btn-mix blue-mate" slot="open" @click="${this.openModal('home-lit-wc-modal')}">
+                  <i class="material-icons">view_quilt</i> WC
+                </button>
+                Web Components is a suite of different technologies allowing you to create reusable custom elements —
+                with their functionality encapsulated away from the rest of your code — and utilize them in your web
+                apps.
+              </lit-modal>
+              <lit-modal id="home-lit-catalog-modal">
+                <button class="sd-btn-mix green-mate" slot="open" @click="${this.openModal('home-lit-catalog-modal')}">
+                  <i class="material-icons">style</i> Catalog
+                </button>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </lit-modal>
               <button class="sd-btn-mix"><i class="material-icons">check</i> Design</button>
             </div>
             <p>
@@ -189,6 +209,10 @@ class HomeView extends LitElement {
         </div>
       </footer>
     `;
+  }
+
+  openModal(id) {
+    return () => this.shadowRoot.getElementById(id).showModal();
   }
 
   render() {
