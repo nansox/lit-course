@@ -19,13 +19,6 @@
     "storybook": "start-storybook -s ./build -p 9001",
     "storybook:build": "build-storybook -o build -s storybook-static && mv ./build ./storybook-build"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test",
-      "pre-push": "npm run lint && npm run test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {

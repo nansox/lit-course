@@ -1,6 +1,7 @@
 <img src="https://cdn.jsdelivr.net/gh/vicdata4/lit-course/assets/images/logo-md.png" width="100"/>
 
 ## Dependencies
+
 - [Rollup.js](https://rollupjs.org) Module bundler
 - [LitElement](https://lit-element.polymer-project.org) Web Components
 - [LitHtml](https://lit-html.polymer-project.org) HTML templating library
@@ -15,18 +16,18 @@
 - [CommitLint](https://commitlint.js.org/) Commit convention
 - [Storybook](https://storybook.js.org/) UI components tool
 
-
 ## Quick start
 
 Run from command line
 
 ```bash
-git clone https://github.com/vicdata4/lit-course
+git clone https://github.com/nansox/lit-course
 
 cd lit-course
 ```
 
 Install dependencies
+
 ```bash
 npm install
 ```
@@ -44,24 +45,27 @@ Conventional commits
 ```bash
 fix: some message
 ```
+
 ```bash
 fix(scope): some message
 ```
+
 \
 [Unit Tests](https://github.com/vicdata4/lit-course/tree/master/tests)
-
 
 ```bash
 npm run test
 ```
 
-ESLint 
+ESLint
+
 - [ESLint Config](https://github.com/vicdata4/lit-course/tree/master/.eslintrc.js)
 - [Prettier Config](https://github.com/vicdata4/lit-course/tree/master/.prettierrc)
 
 ```bash
 npm run lint
 ```
+
 ```bash
 npm run lint:fix
 ```
