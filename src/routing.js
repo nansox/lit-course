@@ -9,6 +9,7 @@ import './views/profiles-view';
 import './views/searcher-view';
 import './views/storybook-view';
 import './profiles';
+import './views/user-search-view';
 
 export const routing = (outlet) => {
   const router = new Router(outlet);
@@ -20,6 +21,7 @@ export const routing = (outlet) => {
     { path: '/profiles', component: 'profiles-view' },
     { path: '/searcher', component: 'searcher-view' },
     { path: '/storybook', component: 'storybook-view' },
+    { path: '/user-search', component: 'user-search-view' },
     { path: '(.*)', component: 'not-found-view' },
   ];
 
