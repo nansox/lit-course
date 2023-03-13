@@ -1,10 +1,98 @@
-import { LitElement, html } from 'lit-element';
-import { material } from '../utils/fonts';
+import { LitElement, html, css } from 'lit-element';
+import { material } from '../../utils/fonts';
 import { nothing } from 'lit-html';
+import './edit-profile-button.js';
 
 class NoEditProfile extends LitElement {
   static get styles() {
-    return [material];
+    return [
+      material,
+      css`
+        :host {
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+        }
+        .profile-header {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .profile-header > img {
+          width: 16.67%;
+          border-radius: 50%;
+        }
+        @media (min-width: 768px) {
+          .profile-header > img {
+            width: 100%;
+          }
+        }
+        .profile-header > div:last-child {
+          padding: 16px 0;
+        }
+        .profile-name {
+          font-size: 24px;
+          line-height: 1.25;
+          font-weight: 600;
+        }
+        .profile-login-name {
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 24px;
+          color: #57606a;
+        }
+        .profile-bio {
+          font-size: 16px;
+          margin-bottom: 16px;
+          color: #24292f;
+          line-height: 1.5;
+        }
+        .profile-info {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+        .profile-follow {
+          margin-bottom: 16px;
+        }
+        .profile-follow i {
+          margin-right: 0.2rem;
+        }
+        .profile-follow a {
+          cursor: pointer;
+          text-decoration: none;
+          color: black;
+        }
+        .profile-follow a:hover {
+          color: #0969da;
+        }
+        .profile-extra > div {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        .profile-extra-link[blog] a {
+          cursor: pointer;
+          text-decoration: none;
+          color: black;
+        }
+        .profile-extra-link[blog] a:hover {
+          color: #0969da;
+          text-decoration: underline;
+        }
+        @media (max-width: 767px) {
+          .profile-info > div:last-child > :not(.profile-extra-link) {
+            display: none;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .profile-info {
+            flex-direction: column;
+          }
+        }
+      `,
+    ];
   }
 
   static get properties() {
@@ -13,45 +101,54 @@ class NoEditProfile extends LitElement {
 
   render() {
     return html`
-      <div>
-        <span>${this.info.name}</span>
-        <span>${this.info.login}</span>
+      <div class="profile-header">
+        <img src="${this.info.avatar_url}" />
+        <div>
+          <div class="profile-name">${this.info.name}</div>
+          <div class="profile-login-name">${this.info.login}</div>
+        </div>
       </div>
-      <div>${this.info.bio}</div>
-      <button>Edit profile</button>
-      <div>
-        <span class="material-icons-outlined"> people </span>
-        <b>${this.info.followers}</b>
-        <span>followers</span>
-        <span>·</span>
-        <b>${this.info.following}</b>
-        <span>following</span>
-      </div>
-      <div>
-        ${this.info.company !== null
-          ? html`<div>
-              <span class="material-icons-outlined"> business </span>
-              <span>${this.info.company}</span>
-            </div>`
-          : nothing}
-        ${this.info.location !== null
-          ? html`<div>
-              <span class="material-icons-outlined"> location_on </span>
-              <span>${this.info.location}</span>
-            </div>`
-          : nothing}
-        ${this.info.email !== null
-          ? html`<div>
-              <span class="material-icons-outlined"> email </span>
-              <span>${this.info.email}</span>
-            </div>`
-          : nothing}
-        ${this.info.blog !== null
-          ? html`<div>
-              <span class="material-icons-outlined"> link </span>
-              <span>${this.info.blog}</span>
-            </div>`
-          : nothing}
+      <edit-profile-button></edit-profile-button>
+      <div class="profile-bio">${this.info.bio}</div>
+      <div class="profile-info">
+        <div class="profile-follow">
+          <a href="${this.info.followers_url}">
+            <i class="material-icons"> people </i>
+            <b>${this.info.followers}</b>
+            <span>followers</span>
+          </a>
+          <span>·</span>
+          <a href="${this.info.following_url}">
+            <b>${this.info.following}</b>
+            <span>following</span>
+          </a>
+        </div>
+        <div class="profile-extra">
+          ${this.info.company !== null
+            ? html`<div>
+                <i class="material-icons"> business </i>
+                <span>${this.info.company}</span>
+              </div>`
+            : nothing}
+          ${this.info.location !== null
+            ? html`<div>
+                <i class="material-icons"> location_on </i>
+                <span>${this.info.location}</span>
+              </div>`
+            : nothing}
+          ${this.info.email !== null
+            ? html`<div>
+                <i class="material-icons"> email </i>
+                <span>${this.info.email}</span>
+              </div>`
+            : nothing}
+          ${this.info.blog !== null
+            ? html`<div class="profile-extra-link" blog>
+                <i class="material-icons"> link </i>
+                <a href="${this.info.blog}">${this.info.blog}</a>
+              </div>`
+            : nothing}
+        </div>
       </div>
     `;
   }

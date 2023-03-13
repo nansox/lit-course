@@ -20,6 +20,10 @@ export const navList = [
     path: '/',
   },
   {
+    name: 'User Search',
+    path: '/user-search',
+  },
+  {
     name: 'Profiles',
     path: '/profiles',
   },
