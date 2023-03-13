@@ -17,6 +17,7 @@ class UserSearchView extends LitElement {
           flex-direction: column;
           align-items: center;
           overflow: auto;
+          padding: 1rem;
         }
       `,
     ];

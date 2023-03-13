@@ -19,13 +19,11 @@ class NoEditProfile extends LitElement {
           flex-wrap: wrap;
         }
         .profile-header > img {
-          width: 16.67%;
+          width: 100%;
           border-radius: 50%;
+          min-width: 86.34px;
         }
         @media (min-width: 768px) {
-          .profile-header > img {
-            width: 100%;
-          }
         }
         .profile-header > div:last-child {
           padding: 16px 0;
@@ -81,6 +79,10 @@ class NoEditProfile extends LitElement {
           text-decoration: underline;
         }
         @media (max-width: 767px) {
+          .profile-header > img {
+            width: 16.67%;
+            margin-right: 1rem;
+          }
           .profile-info > div:last-child > :not(.profile-extra-link) {
             display: none;
           }
