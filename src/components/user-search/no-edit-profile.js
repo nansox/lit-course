@@ -108,8 +108,8 @@ class NoEditProfile extends LitElement {
           <div class="profile-login-name">${this.info.login}</div>
         </div>
       </div>
-      <edit-profile-button></edit-profile-button>
       <div class="profile-bio">${this.info.bio}</div>
+      <edit-profile-button></edit-profile-button>
       <div class="profile-info">
         <div class="profile-follow">
           <a href="${this.info.followers_url}">
@@ -142,7 +142,7 @@ class NoEditProfile extends LitElement {
                 <span>${this.info.email}</span>
               </div>`
             : nothing}
-          ${this.info.blog !== null
+          ${this.info.blog !== null && this.info.blog !== ''
             ? html`<div class="profile-extra-link" blog>
                 <i class="material-icons"> link </i>
                 <a href="${this.info.blog}">${this.info.blog}</a>

@@ -5,7 +5,7 @@ class EditProfileButton extends LitElement {
     return css`
       button {
         width: 100%;
-        height: 100%;
+        height: 32px;
         padding: 5px 16px;
         font-size: 14px;
         font-weight: 500;
