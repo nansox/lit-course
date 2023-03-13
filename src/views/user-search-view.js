@@ -6,6 +6,7 @@ import '../components/common-header';
 import '../components/navigation/navigation-wc.js';
 import '../components/user-search/user-profile.js';
 import '../components/user-search/search-bar';
+import { getUserByName } from '../utils/api/github-users.js';
 
 class UserSearchView extends LitElement {
   static get styles() {
@@ -42,7 +43,7 @@ class UserSearchView extends LitElement {
     try {
       this.loadingFlag = true;
       this.notFoundFlag = false;
-      this.userInfo = await fetch(`https://api.github.com/users/${detail}`).then(async (response) => {
+      this.userInfo = await getUserByName(detail).then(async (response) => {
         if (!response.ok) {
           const { message = null } = await response.json();
           if (message === 'Not Found') this.notFoundFlag = true;

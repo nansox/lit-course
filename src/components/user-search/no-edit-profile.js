@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import { material } from '../../utils/fonts';
 import { nothing } from 'lit-html';
 import './edit-profile-button.js';
+import './profile-avatar-img.js';
 
 class NoEditProfile extends LitElement {
   static get styles() {
@@ -17,11 +18,6 @@ class NoEditProfile extends LitElement {
           width: 100%;
           display: flex;
           flex-wrap: wrap;
-        }
-        .profile-header > img {
-          width: 100%;
-          border-radius: 50%;
-          min-width: 86.34px;
         }
         @media (min-width: 768px) {
         }
@@ -79,10 +75,6 @@ class NoEditProfile extends LitElement {
           text-decoration: underline;
         }
         @media (max-width: 767px) {
-          .profile-header > img {
-            width: 16.67%;
-            margin-right: 1rem;
-          }
           .profile-info > div:last-child > :not(.profile-extra-link) {
             display: none;
           }
@@ -104,7 +96,7 @@ class NoEditProfile extends LitElement {
   render() {
     return html`
       <div class="profile-header">
-        <img src="${this.info.avatar_url}" />
+        <profile-avatar-img .url="${this.info.avatar_url}"></profile-avatar-img>
         <div>
           <div class="profile-name">${this.info.name}</div>
           <div class="profile-login-name">${this.info.login}</div>
