@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import { material } from '../../utils/fonts';
 import { nothing } from 'lit-html';
 import './edit-profile-button.js';
-import './profile-avatar-img.js';
+import './profile-header.js';
 
 class NoEditProfile extends LitElement {
   static get styles() {
@@ -13,28 +13,6 @@ class NoEditProfile extends LitElement {
           display: flex;
           flex-direction: column;
           font-family: 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-        }
-        .profile-header {
-          width: 100%;
-          display: flex;
-          flex-wrap: wrap;
-        }
-        @media (min-width: 768px) {
-        }
-        .profile-header > div:last-child {
-          padding: 16px 0;
-        }
-        .profile-name {
-          font-size: 24px;
-          line-height: 1.25;
-          font-weight: 600;
-        }
-        .profile-login-name {
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 300;
-          line-height: 24px;
-          color: #57606a;
         }
         .profile-bio {
           font-size: 16px;
@@ -95,13 +73,7 @@ class NoEditProfile extends LitElement {
 
   render() {
     return html`
-      <div class="profile-header">
-        <profile-avatar-img .url="${this.info.avatar_url}"></profile-avatar-img>
-        <div>
-          <div class="profile-name">${this.info.name}</div>
-          <div class="profile-login-name">${this.info.login}</div>
-        </div>
-      </div>
+      <profile-header .info="${this.info}"></profile-header>
       <div class="profile-bio">${this.info.bio}</div>
       <edit-profile-button></edit-profile-button>
       <div class="profile-info">

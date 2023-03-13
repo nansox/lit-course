@@ -1,6 +1,7 @@
+// const headers = {
+//   Authorization: 'PUT TOKEN',
+// };
+const headers = null;
+
 export const getUserByName = async (name) =>
-  fetch(`https://api.github.com/users/${name}`, {
-    headers: {
-      Authorization: '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',
-    },
-  });
+  fetch(`https://api.github.com/users/${name}`, headers ? { headers } : undefined);
